@@ -14,7 +14,7 @@ struct AppbilityApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var deligate
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SplashLoaderView(viewToLoad: LoginView())
         }
     }
 }
@@ -22,7 +22,7 @@ struct AppbilityApp: App {
 class AppDelegate: NSObject, UIApplicationDelegate{
     func application(_ application: UIApplication, didFinishLaunchingWithOptions  launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool{
         FirebaseApp.configure()
-        print("Connected Firebase")
+        //print("Connected Firebase")
 
         return true
     }

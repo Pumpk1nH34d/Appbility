@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  SplashLoaderView.swift
 //  Appbility
 //
 //  Created by Au?tin on 13/11/2023.
@@ -15,63 +15,81 @@ struct LoginView: View {
     @State private var wrongPassword: Float  = 0
     @State private var logged_in = false
     
+    @State private var scale = CGSize(width: 10.0, height: 10.0)
+    @State private var opacity = 0.0
+    
     var body: some View {
         NavigationView {
             ZStack {
-                circleBackgroundView()
-                
-                VStack {
-                    Text("Login")
-                        .font(Font.custom("Nunito", size: 40))
-                        .bold()
-                        .foregroundColor(Color("Dark Blue"))
-                        .padding()
+                Color("Dark Blue")
+                    .ignoresSafeArea(.all)
+                ZStack{
+                    circleBackgroundView()
                     
-                    VStack{
-                        InputView(text: $email, placeholder: "example@email.com", image: "at", isSecureField: false)
-                        InputView(text: $password, placeholder: "Password", image: "lock", isSecureField: true)
-                    }
-                    
-                    HStack {
-                        Button("Login") {
-                            authenticateUser(email: email, password: password) { authResult in
-                                if let result = authResult {
-                                    wrongPassword=0
-                                    wrongEmail=0
-                                    logged_in = true
-                                    print("User is authenticated, user ID: \(result.user.uid)")
-                                } else {
-                                    wrongPassword=2
-                                    wrongEmail=2
+                    VStack {
+                        Text("Login")
+                            .font(Font.custom("Nunito", size: 40))
+                            .bold()
+                            .foregroundColor(Color("Dark Blue"))
+                            .padding()
+                        
+                        VStack{
+                            InputView(text: $email, placeholder: "example@email.com", image: "at", isSecureField: false)
+                            InputView(text: $password, placeholder: "Password", image: "lock", isSecureField: true)
+                        }
+                        
+                        HStack {
+                            Button("Login") {
+                                authenticateUser(email: email, password: password) { authResult in
+                                    if let result = authResult {
+                                        wrongPassword=0
+                                        wrongEmail=0
+                                        logged_in = true
+                                        print("User is authenticated, user ID: \(result.user.uid)")
+                                    } else {
+                                        wrongPassword=2
+                                        wrongEmail=2
+                                    }
                                 }
                             }
-                        }
                             .font(Font.custom("Nunito", size: 20))
                             .bold()
-                               
-                        Image(systemName: "arrow.right")
-                            .bold()
+                            
+                            Image(systemName: "arrow.right")
+                                .bold()
+                            
+                        }.foregroundColor(.white)
+                            .frame(width: 300, height: 50)
+                            .background(Color("Dark Blue"))
+                            .cornerRadius(10)
+                            .padding()
                         
-                    }.foregroundColor(.white)
-                        .frame(width: 300, height: 50)
-                        .background(Color("Dark Blue"))
-                        .cornerRadius(10)
-                        .padding()
-                        
-                    NavigationLink(destination: SignUpView().navigationBarHidden(true)){
-                        HStack{
-                            Text("Don't have an account?")
-                            Text("Sign Up")
-                                .fontWeight(.bold)
+                        NavigationLink(destination: SignUpView().navigationBarHidden(true)){
+                            HStack{
+                                Text("Don't have an account?")
+                                Text("Sign Up")
+                                    .fontWeight(.bold)
+                            }
+                            .font(Font.custom("Nunito", size: 14))
+                            .foregroundColor(Color("Dark Blue"))
+                            
                         }
-                        .font(Font.custom("Nunito", size: 14))
-                        
+                        NavigationLink(destination: UserView().navigationBarBackButtonHidden(), isActive: $logged_in) {
+                            EmptyView()
+                        }
+                    }.opacity(opacity)
+                    
+                }
+                .scaleEffect(scale)
+                
+                .onAppear{
+                    withAnimation(.easeInOut(duration: 0.5)) {
+                        opacity = 1
                     }
-                    NavigationLink(destination: UserView().navigationBarBackButtonHidden(), isActive: $logged_in) {
-                        EmptyView()
+                    withAnimation(.easeInOut(duration: 1.0)) {
+                        scale = CGSize(width: 1.0, height: 1.0)
                     }
                 }
-                
             }
         }.navigationBarHidden(true)
     }
