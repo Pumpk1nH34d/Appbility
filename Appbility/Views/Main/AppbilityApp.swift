@@ -14,7 +14,7 @@ struct AppbilityApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var deligate
     var body: some Scene {
         WindowGroup {
-            SplashLoaderView(viewToLoad: LoginView())
+            SplashView()
         }
     }
 }

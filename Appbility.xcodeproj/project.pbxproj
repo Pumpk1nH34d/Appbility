@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3B12A1F52B05F2FD00311C4E /* AppbilityApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B12A1F42B05F2FD00311C4E /* AppbilityApp.swift */; };
-		3B12A1F72B05F2FD00311C4E /* SplashLoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B12A1F62B05F2FD00311C4E /* SplashLoaderView.swift */; };
 		3B12A1F92B05F2FE00311C4E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B12A1F82B05F2FE00311C4E /* Preview Assets.xcassets */; };
 		3B12A2052B05F3CD00311C4E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3B12A2042B05F3CD00311C4E /* FirebaseAnalytics */; };
 		3B12A2072B05F3CD00311C4E /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 3B12A2062B05F3CD00311C4E /* FirebaseAnalyticsOnDeviceConversion */; };
@@ -47,13 +46,12 @@
 		3BC4680B2B05F858005AF8AD /* VolumeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC4680A2B05F858005AF8AD /* VolumeControl.swift */; };
 		3BC4680E2B05FEA1005AF8AD /* Nunito.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3BC4680D2B05FE82005AF8AD /* Nunito.ttf */; };
 		3BC468132B0603AB005AF8AD /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC468122B0603AB005AF8AD /* InputView.swift */; };
-		3BC468152B0606B1005AF8AD /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC468142B0606B1005AF8AD /* SplashView.swift */; };
+		3BD393ED2B08CC2A00CE09BF /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD393EC2B08CC2A00CE09BF /* SplashView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3B12A1F12B05F2FD00311C4E /* Appbility.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Appbility.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B12A1F42B05F2FD00311C4E /* AppbilityApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppbilityApp.swift; sourceTree = "<group>"; };
-		3B12A1F62B05F2FD00311C4E /* SplashLoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashLoaderView.swift; sourceTree = "<group>"; };
 		3B12A1F82B05F2FE00311C4E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3BC467F12B05F452005AF8AD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3BC467FC2B05F6A9005AF8AD /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -66,7 +64,7 @@
 		3BC4680D2B05FE82005AF8AD /* Nunito.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Nunito.ttf; sourceTree = "<group>"; };
 		3BC4680F2B05FF3B005AF8AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3BC468122B0603AB005AF8AD /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
-		3BC468142B0606B1005AF8AD /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		3BD393EC2B08CC2A00CE09BF /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,12 +127,9 @@
 			isa = PBXGroup;
 			children = (
 				3BC4680F2B05FF3B005AF8AD /* Info.plist */,
-				3BC468162B0606BB005AF8AD /* Main */,
+				3BD393EB2B08CA8300CE09BF /* Views */,
 				3BC4680C2B05FE2C005AF8AD /* Fonts */,
 				3BC468112B060387005AF8AD /* Components */,
-				3BC468072B05F836005AF8AD /* VolumeControl */,
-				3BC468042B05F802005AF8AD /* UserView */,
-				3BC467FB2B05F69B005AF8AD /* Login */,
 				3BC468102B0602EF005AF8AD /* Preview Content */,
 			);
 			path = Appbility;
@@ -202,11 +197,21 @@
 		3BC468162B0606BB005AF8AD /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				3B12A1F62B05F2FD00311C4E /* SplashLoaderView.swift */,
-				3BC468142B0606B1005AF8AD /* SplashView.swift */,
 				3B12A1F42B05F2FD00311C4E /* AppbilityApp.swift */,
+				3BD393EC2B08CC2A00CE09BF /* SplashView.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		3BD393EB2B08CA8300CE09BF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3BC468162B0606BB005AF8AD /* Main */,
+				3BC467FB2B05F69B005AF8AD /* Login */,
+				3BC468042B05F802005AF8AD /* UserView */,
+				3BC468072B05F836005AF8AD /* VolumeControl */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -315,12 +320,11 @@
 				3BC468032B05F7C0005AF8AD /* FirebaseAuth.swift in Sources */,
 				3BC467FD2B05F6A9005AF8AD /* LoginView.swift in Sources */,
 				3BC467FF2B05F711005AF8AD /* circleBackgroundView.swift in Sources */,
-				3B12A1F72B05F2FD00311C4E /* SplashLoaderView.swift in Sources */,
-				3BC468152B0606B1005AF8AD /* SplashView.swift in Sources */,
 				3B12A1F52B05F2FD00311C4E /* AppbilityApp.swift in Sources */,
 				3BC4680B2B05F858005AF8AD /* VolumeControl.swift in Sources */,
 				3BC468012B05F789005AF8AD /* SignUpView.swift in Sources */,
 				3BC468132B0603AB005AF8AD /* InputView.swift in Sources */,
+				3BD393ED2B08CC2A00CE09BF /* SplashView.swift in Sources */,
 				3BC468092B05F847005AF8AD /* VolumeControlView.swift in Sources */,
 				3BC468062B05F80F005AF8AD /* UserView.swift in Sources */,
 			);

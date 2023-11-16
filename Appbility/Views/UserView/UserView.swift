@@ -6,12 +6,19 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct UserView: View {
+    @State private var email: String = getUserEmail()
+    
     var body: some View {
-        Text("Hello world")
+        Text("userId: \(email)").onAppear{
+            print("userId: \(email)")
+        }
+        
     }
 }
+
 
 #Preview {
     UserView()

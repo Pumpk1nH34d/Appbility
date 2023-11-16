@@ -51,4 +51,7 @@ func createUser(email: String, password: String, firstname: String, surname: Str
     }
 }
     
+func getUserEmail() -> String {
+    return Auth.auth().currentUser?.email ?? "No email found"
+}
  

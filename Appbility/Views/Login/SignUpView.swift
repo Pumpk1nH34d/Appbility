@@ -20,56 +20,61 @@ struct SignUpView: View {
                 circleBackgroundView()
                 VStack{
                     Text("Signup")
-                        .font(.largeTitle)
+                        .font(Font.custom("Nunito", size: 40))
                         .bold()
+                        .foregroundColor(Color("Dark Blue"))
                         .padding()
                     VStack{
                         VStack{
-                        InputView(text: $firstName, placeholder: "John", image: "person", isSecureField: false)
-                        InputView(text: $surname, placeholder: "Doe", image: "person", isSecureField: false)
-                    }
+                            InputView(text: $firstName, placeholder: "John", image: "person", isSecureField: false)
+                            InputView(text: $surname, placeholder: "Doe", image: "person", isSecureField: false)
+                        }
                         .padding()
                         
                         InputView(text: $email, placeholder: "example@email.com", image: "at", isSecureField: false)
                         InputView(text: $password, placeholder: "Password", image: "lock", isSecureField: true)
                         
                     }
-                    HStack {
-                        Button("Create Account") {
-                            createUser(email: email, password: password, firstname: firstName, surname: surname) { success in
-                                if success {
-                                    print("User creation was successful.")
-                                    logged_in = true
-                                } else {
-                                    print("User creation failed.")
-                                }
+                    
+                    Button() {
+                        createUser(email: email, password: password, firstname: firstName, surname: surname) { success in
+                            if success {
+                                print("User creation was successful.")
+                                logged_in = true
+                            } else {
+                                print("User creation failed.")
                             }
                         }
+                    } label: {
+                        Text("Create Account")
+                            .font(Font.custom("Nunito", size: 20))
+                            .bold()
                         Image(systemName: "arrow.right")
-                        
+                            .bold()
                     }.foregroundColor(.white)
                         .frame(width: 300, height: 50)
-                        .background(Color.blue)
+                        .background(Color("Dark Blue"))
                         .cornerRadius(10)
                         .padding()
                     
                     NavigationLink{
                         LoginView()
-                        .navigationBarHidden(true)
+                            .navigationBarHidden(true)
                     } label: {
                         HStack{
                             Text("Already have an account?")
                             Text("Log In")
                                 .fontWeight(.bold)
                         }
-                            .font(.system(size: 14))
-                            
-                    }
-                    NavigationLink(destination: UserView().navigationBarBackButtonHidden(), isActive: $logged_in) {
-                        EmptyView()
+                        .font(Font.custom("Nunito", size: 14))
+                        .foregroundColor(Color("Dark Blue"))
                     }
                 }
+            }.onAppear{
                 
+                withAnimation(.easeInOut(duration: 1.0)) {
+                    print("sign up")
+                }
             }
         }
     }
@@ -78,3 +83,4 @@ struct SignUpView: View {
 #Preview {
     SignUpView()
 }
+
