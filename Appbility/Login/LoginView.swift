@@ -15,7 +15,6 @@ struct LoginView: View {
     @State private var wrongPassword: Float  = 0
     @State private var logged_in = false
     
-    
     var body: some View {
         NavigationView {
             ZStack {
@@ -23,17 +22,13 @@ struct LoginView: View {
                 
                 VStack {
                     Text("Login")
-                        .font(.largeTitle)
+                        .font(Font.custom("Nunito", size: 40))
                         .bold()
-
-
-                        .foregroundColor(.black)
+                        .foregroundColor(Color("Dark Blue"))
                         .padding()
                     
                     VStack{
                         InputView(text: $email, placeholder: "example@email.com", image: "at", isSecureField: false)
-
-                        InputView(text: $password, placeholder: "abc123", image: "lock", isSecureField: true)
                         InputView(text: $password, placeholder: "Password", image: "lock", isSecureField: true)
                     }
                     
@@ -51,23 +46,25 @@ struct LoginView: View {
                                 }
                             }
                         }
+                            .font(Font.custom("Nunito", size: 20))
+                            .bold()
+                               
                         Image(systemName: "arrow.right")
+                            .bold()
                         
                     }.foregroundColor(.white)
                         .frame(width: 300, height: 50)
-                        .background(Color.blue)
+                        .background(Color("Dark Blue"))
                         .cornerRadius(10)
                         .padding()
-                    
-                    
-                    
+                        
                     NavigationLink(destination: SignUpView().navigationBarHidden(true)){
                         HStack{
                             Text("Don't have an account?")
                             Text("Sign Up")
                                 .fontWeight(.bold)
                         }
-                        .font(.system(size: 14))
+                        .font(Font.custom("Nunito", size: 14))
                         
                     }
                     NavigationLink(destination: UserView().navigationBarBackButtonHidden(), isActive: $logged_in) {

@@ -1,8 +1,8 @@
 //
-//  Components.swift
+//  InputView.swift
 //  Appbility
 //
-//  Created by Au?tin on 14/11/2023.
+//  Created by Au?tin on 16/11/2023.
 //
 
 import SwiftUI
@@ -23,6 +23,7 @@ struct InputView: View {
                     .frame(width: 300, height: 50)
                     .background(Color.black.opacity(0.05))
                     .cornerRadius(10)
+                    .font(Font.custom("Nunito", size: 15))
             } else {
                 
                 TextField(placeholder, text: $text)
@@ -30,32 +31,12 @@ struct InputView: View {
                     .frame(width: 300, height: 50)
                     .background(Color.black.opacity(0.05))
                     .cornerRadius(10)
+                    .font(Font.custom("Nunito", size: 15))
             }
         }
     }
 }
 
-struct circleBackgroundView: View {
-    var body: some View {
-        ZStack{
-            Color.blue
-                .ignoresSafeArea()
-            Circle()
-                .scale(1.7)
-                .foregroundColor(.white.opacity(0.15))
-            Circle()
-                .scale(1.35)
-                .foregroundColor(.white)
-        }
-    }
-}
-
-
-struct InputView_Previews: PreviewProvider {
-    static var previews: some View {
-        ZStack{
-            circleBackgroundView()
-            InputView(text: .constant(""), placeholder: "Enter your email", image: "at", isSecureField: false)
-        }
-    }
+#Preview {
+    InputView(text: .constant(""), placeholder: "Enter your email", image: "at", isSecureField: false)
 }
