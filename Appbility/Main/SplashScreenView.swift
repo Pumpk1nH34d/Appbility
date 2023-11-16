@@ -15,6 +15,8 @@ struct SplashScreenView: View {
             Image("Logo")
                 .resizable()
                 .scaledToFit()
+        }.onAppear {
+            
         }
     }
 }

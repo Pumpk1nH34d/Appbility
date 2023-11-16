@@ -9,19 +9,23 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var showSplash = true
+    @State private var opacity = 0.5
+    @State private var scale = 1.0
     var body: some View {
         ZStack{
             if showSplash {
                 SplashScreenView()
-                    .transition(.opacity)
-                    .animation(.easeOut(duration: 1.5))
+                    .scaleEffect(scale)
+                    
+                    
+                
             } else {
                 LoginView()
-                    .transition(.opacity)
+                    .transition(.scale(10))
             }
         }
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
                 withAnimation{
                     self.showSplash = false
                 }
