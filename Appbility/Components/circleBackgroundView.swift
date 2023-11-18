@@ -10,7 +10,7 @@ import SwiftUI
 struct circleBackgroundView: View {
     var body: some View {
         ZStack{
-            Color("Dark Blue")
+            Color("Light Blue")
                 .ignoresSafeArea()
             Circle()
                 .scale(1.7)

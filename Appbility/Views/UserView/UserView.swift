@@ -9,12 +9,12 @@ import SwiftUI
 import FirebaseAuth
 
 struct UserView: View {
-    @State private var email: String = getUserEmail()
+    @State private var text: String = "Welcome!!"
+
     
     var body: some View {
-        Text("userId: \(email)").onAppear{
-            print("userId: \(email)")
-        }
+        ProfileCardView()
+        
         
     }
 }

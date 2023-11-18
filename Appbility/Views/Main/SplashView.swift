@@ -8,26 +8,45 @@
 import SwiftUI
 
 struct SplashView: View {
+    @AppStorage("isLoggedIn") private var isLoggedIn: Bool = false
     
     @State private var showSplash = true
     @State private var scale = CGSize(width: 10.0, height: 10.0)
     @State private var opacity = 0.0
     
     var body: some View {
-        if showSplash {
-            _SplashView(showSplash: $showSplash)
-        } else {
-            LoginView()
-                .scaleEffect(scale)
-                .opacity(opacity)
-                .onAppear{
-                    withAnimation(.easeInOut(duration: 1.0)) {
-                        opacity = 1
-                    }
-                    withAnimation(.easeInOut(duration: 1.0)) {
-                        scale = CGSize(width: 1.0, height: 1.0)
+        Group {
+            if showSplash {
+                _SplashView(showSplash: $showSplash)
+            } else {
+                Group{
+                    if isLoggedIn{
+                        UserView()
+                            .scaleEffect(scale)
+                            .opacity(opacity)
+                            .onAppear{
+                                withAnimation(.easeInOut(duration: 0.5)) {
+                                    opacity = 1
+                                }
+                                withAnimation(.easeInOut(duration: 0.5)) {
+                                    scale = CGSize(width: 1.0, height: 1.0)
+                                }
+                            }
+                    } else{
+                        LoginView().scaleEffect(scale)
+                            .opacity(opacity)
+                            .onAppear{
+                                withAnimation(.easeInOut(duration: 0.5)) {
+                                    opacity = 1
+                                }
+                                withAnimation(.easeInOut(duration: 0.5)) {
+                                    scale = CGSize(width: 1.0, height: 1.0)
+                                }
+                            }
+                        
                     }
                 }
+            }
         }
     }
 }
@@ -40,7 +59,7 @@ private struct _SplashView: View {
     
     var body: some View {
         ZStack {
-            Color("Dark Blue")
+            Color("Light Blue")
                 .ignoresSafeArea(.all)
             Image("Logo")
                 .resizable()
@@ -51,11 +70,11 @@ private struct _SplashView: View {
                 .opacity(whiteOpacity)
         }
         .onAppear {
-            withAnimation(.easeInOut(duration: 0.5)) {
+            withAnimation(.easeInOut(duration: 0.2)) {
                 whiteOpacity = 0.0
                 scale = CGSize(width: 1, height: 1)
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 withAnimation(.easeInOut(duration: 0.5)) {
                     scale = CGSize(width: 0.0, height: 0.0)
                     whiteOpacity = 1.0
